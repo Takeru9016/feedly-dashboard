@@ -1,3 +1,9 @@
+import { NewProjectButton } from "@/components";
+
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <NewProjectButton />
+    </div>
+  );
 }
