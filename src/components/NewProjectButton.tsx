@@ -1,10 +1,10 @@
 import { Plus } from "lucide-react";
+
 import { Button } from "./ui/button";
 import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -12,6 +12,9 @@ import {
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Textarea } from "./ui/textarea";
+import SubmitProjectButton from "./SubmitProjectButton";
+
+import { createProject } from "@/actions";
 
 export default function NewProjectButton() {
   return (
@@ -30,12 +33,13 @@ export default function NewProjectButton() {
             your team
           </DialogDescription>
         </DialogHeader>
-        <form className="flex gap-4 flex-col">
+        <form className="flex gap-4 flex-col" action={createProject}>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <Label htmlFor="name">Name</Label>
               <Input
                 id="name"
+                name="name"
                 placeholder="Project Name"
                 type="text"
                 required
@@ -43,18 +47,24 @@ export default function NewProjectButton() {
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="url">URL</Label>
-              <Input id="url" placeholder="https://example.com" required />
+              <Input
+                id="url"
+                name="url"
+                placeholder="https://example.com"
+                required
+              />
             </div>
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="description">Description</Label>
-            <Textarea id="description" placeholder="Project Description" />
+            <Textarea
+              id="description"
+              name="description"
+              placeholder="Project Description"
+            />
           </div>
+          <SubmitProjectButton />
         </form>
-        <DialogFooter>
-          <Button variant="secondary">Cancel</Button>
-          <Button>Create Project</Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   );
