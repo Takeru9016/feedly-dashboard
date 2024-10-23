@@ -1,9 +1,10 @@
 import { auth } from "@clerk/nextjs/server";
 import { eq } from "drizzle-orm";
 
-import { NewProjectButton, ProjectList } from "@/components";
+import { NewProjectButton } from "@/components";
 import { db } from "@/db";
 import { projects } from "@/db/schema";
+import ProjectList from "./ProjectList";
 
 export default async function Dashboard() {
   const { userId } = auth();
