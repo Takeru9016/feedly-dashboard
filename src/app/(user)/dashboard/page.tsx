@@ -17,7 +17,7 @@ export default async function Dashboard() {
 
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between border-b">
         <h1 className="text-3xl font-bold text-center my-4">Your Projects</h1>
         <NewProjectButton />
       </div>

@@ -29,7 +29,7 @@ export default async function ViewProject({
       <div>
         <Link
           href="/dashboard"
-          className="flex items-center text-indigo-700 mb-5"
+          className="flex items-center text-indigo-700 mb-5 w-fit"
         >
           <ChevronLeft className="mr-1 h-5 w-5" />
           <span className="text-lg">Back to Projects</span>
