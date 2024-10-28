@@ -1,9 +1,10 @@
+import Link from "next/link";
+import { ChevronLeft, Globe } from "lucide-react";
 import { eq } from "drizzle-orm";
 
 import { db } from "@/db";
 import { projects as dbProjects } from "@/db/schema";
-import Link from "next/link";
-import { Globe } from "lucide-react";
+import { Table } from "@/components";
 
 export default async function ViewProject({
   params,
@@ -25,6 +26,16 @@ export default async function ViewProject({
 
   return (
     <div>
+      <div>
+        <Link
+          href="/dashboard"
+          className="flex items-center text-indigo-700 mb-5"
+        >
+          <ChevronLeft className="mr-1 h-5 w-5" />
+          <span className="text-lg">Back to Projects</span>
+        </Link>
+        <hr className="mb-5" />
+      </div>
       <div className="flex justify-between items-start">
         <div className="proj-info">
           <h1 className="text-3xl font-bold mb-3">{projectData.name}</h1>
@@ -41,6 +52,10 @@ export default async function ViewProject({
             <span className="text-lg">View Site</span>
           </Link>
         ) : null}
+      </div>
+
+      <div>
+        <Table data={projectData.feedbacks} />
       </div>
     </div>
   );
