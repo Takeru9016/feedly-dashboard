@@ -22,6 +22,7 @@ import {
 } from "@tanstack/react-table";
 
 import { feedbacks } from "@/db/schema";
+import Rating from "./Rating";
 
 type Feedback = InferSelectModel<typeof feedbacks>;
 
@@ -39,6 +40,19 @@ export default function Table(props: { data: Feedback[] }) {
         id: "userEmail",
         cell: (info) => info.getValue(),
         header: () => <span>Email</span>,
+        footer: (props) => props.column.id,
+      },
+
+      {
+        accessorFn: (row) => row.rating,
+        id: "rating",
+        cell: (info) =>
+          info.getValue() === null ? (
+            <span>N/A</span>
+          ) : (
+            <Rating rating={info.getValue() as number} count={5} />
+          ),
+        header: () => <span>Rating</span>,
         footer: (props) => props.column.id,
       },
       {

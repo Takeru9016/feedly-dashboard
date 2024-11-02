@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ChevronLeft, Globe } from "lucide-react";
+import { ChevronLeft, Code, Globe } from "lucide-react";
 import { eq } from "drizzle-orm";
 
 import { db } from "@/db";
@@ -43,15 +43,25 @@ export default async function ViewProject({
             {projectData.description}
           </h2>
         </div>
-        {projectData.url ? (
+        <div className="flex flex-col">
+          {projectData.url ? (
+            <Link
+              href={projectData.url}
+              className="flex items-center underline text-indigo-700"
+            >
+              <Globe size={20} className="mr-1" />
+              <span className="text-lg">View Site</span>
+            </Link>
+          ) : null}
+
           <Link
-            href={projectData.url}
+            href={`/projects/${params.projectId}/instructions`}
             className="flex items-center underline text-indigo-700"
           >
-            <Globe size={20} className="mr-1" />
-            <span className="text-lg">View Site</span>
+            <Code size={20} className="mr-1" />
+            <span className="text-lg">Instructions</span>
           </Link>
-        ) : null}
+        </div>
       </div>
 
       <div>
