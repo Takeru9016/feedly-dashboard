@@ -23,12 +23,7 @@ export default async function Dashboard() {
     <div>
       <div className="flex items-center justify-between border-b">
         <h1 className="text-3xl font-bold text-center my-4">Your Projects</h1>
-        {subscribed !== true && userProjects.length > maxFreeProjects ? (
-          <p className="text-red-500 text-sm font-bold my-4 text-center w-full">
-            You have reached the maximum number of free projects allowed.
-            Upgrade to a premium plan to create more projects.
-          </p>
-        ) : (
+        {subscribed !== true && userProjects.length > maxFreeProjects ? null : (
           <NewProjectButton />
         )}
       </div>
